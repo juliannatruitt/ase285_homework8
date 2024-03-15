@@ -1,11 +1,11 @@
-### Week 10 Progress
+# Week 10 Progress
 
-# LOC:
+## LOC:
 - 0 lines
 
-# Burndown Rate:
+## Burndown Rate:
 - 0%
 
-# Test coverage
+## Test coverage
 - 0/6 unit tests complete
 - 0/1 acceptance tests complete
