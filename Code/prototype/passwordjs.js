@@ -11,25 +11,29 @@ async function passwordjs() {
     var email = process.argv[2]
     var password = process.argv[3]
 
+
     let readAllUsers = util.readFile('./password.txt');
     while (readAllUsers.length > 0){
         let currentUser = readAllUsers.shift();
         let username = currentUser.split(':')[0];
         if (username === email){
-            console.log(await util.readFromMongoose(email, password));
-            break; // fix this?? maybe
+            return await util.readFromMongoose(email, password);
         }
     }
-    //fs.appendFileSync('./password.txt', `${email}:${password}`);
-    //makepassword('./password.txt', './password.enc.txt');
+    util.appendFile('./password.txt', `\n${email}:${password}`);
+    await makepassword('./password.txt', './password.enc.txt');
 }
-passwordjs();
+async function main(){
+    console.log(await passwordjs());
+}
+main();
 //let usersArray = util.readFile('password.enc.txt');
 //util.uploadToMongoose(usersArray);
 
 //console.log(readFromMongoose("john.deacon@good.com", "bestpassword"));
-////if (require.main === module) {
-//    console.log(passwordjs()) // print out true or false
-//}
+//if (require.main === module) {
+//    console.log(passwordjs())
+//} // print out true or false
+
 //
 //module.exports = {???};

@@ -29,28 +29,38 @@ function writeFile(ar, fileName) {
     }
 }
 
+function appendFile(fileName, lineToAdd){
+    try{
+        fs.appendFileSync(fileName, lineToAdd);
+    }catch (err) {
+        console.log(err)
+    }
+}
+
 function hash(input) {
     return createHash('sha256').update(input).digest('hex'); // never use md5
 }
 
 async function uploadToMongoose(ar){
-    await mongoose.connect(process.env.URI);
-    console.log("Connected to DB!");
     try{
+        await mongoose.connect(process.env.URI);
+        console.log("Connected to DB!");
+        //let allUsers = await Users.find({}).exec();
         while(ar.length > 0) {
             let currentUser = ar.shift();
             let [username, password] = currentUser.split(':')
-            let newuser = new Users({
-                username: username,
-                password: password
-            });
-            id++;
-            await newuser.save();
+            //if (!(username in allUsers)) {
+                let newuser = new Users({
+                    username: username,
+                    password: password
+                });
+                await newuser.save();
+           // }
         }
+        await mongoose.connection.close();
     }catch (error){
         console.log(error);
     }
-    await mongoose.connection.close();
 }
 
 async function readFromMongoose(username, password){
@@ -60,6 +70,8 @@ async function readFromMongoose(username, password){
         let allUsers = await Users.find({}).exec();
         for (let i=0; i<allUsers.length; i++){
             if (allUsers[i].username === username) {
+                console.log(hash(password).toString());
+                console.log(allUsers[i].password.toString());
                 if (hash(password).toString() === allUsers[i].password.toString()) {
                     return true;
                 }
@@ -68,8 +80,9 @@ async function readFromMongoose(username, password){
         return false;
     }catch (error){
         console.log(error);
+    }finally {
+        await mongoose.connection.close();
     }
-    await mongoose.connection.close();
 }
 
-module.exports = {readFile, writeFile, hash, uploadToMongoose, readFromMongoose};
+module.exports = {readFile, writeFile, appendFile, hash, uploadToMongoose, readFromMongoose};
