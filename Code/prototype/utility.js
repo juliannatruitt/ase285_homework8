@@ -45,17 +45,22 @@ async function uploadToMongoose(ar){
     try{
         await mongoose.connect(process.env.URI);
         console.log("Connected to DB!");
-        //let allUsers = await Users.find({}).exec();
+        let allUsers = await Users.find({}).exec();
+        let allUsernames = [];
+        allUsers.forEach(username => {
+            allUsernames.push(username.username);
+        });
+
         while(ar.length > 0) {
             let currentUser = ar.shift();
             let [username, password] = currentUser.split(':')
-            //if (!(username in allUsers)) {
+            if (!(allUsernames.includes(username))) {
                 let newuser = new Users({
                     username: username,
                     password: password
                 });
                 await newuser.save();
-           // }
+            }
         }
         await mongoose.connection.close();
     }catch (error){
@@ -70,8 +75,6 @@ async function readFromMongoose(username, password){
         let allUsers = await Users.find({}).exec();
         for (let i=0; i<allUsers.length; i++){
             if (allUsers[i].username === username) {
-                console.log(hash(password).toString());
-                console.log(allUsers[i].password.toString());
                 if (hash(password).toString() === allUsers[i].password.toString()) {
                     return true;
                 }
