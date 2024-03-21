@@ -11,7 +11,6 @@ async function passwordjs() {
     var email = process.argv[2]
     var password = process.argv[3]
 
-
     let readAllUsers = util.readFile('./password.txt');
     while (readAllUsers.length > 0){
         let currentUser = readAllUsers.shift();
