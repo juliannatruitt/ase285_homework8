@@ -16,10 +16,4 @@ async function makepassword(passwordFileName, encryptedPasswordFileName) {
    await uploadToMongoose(encCredentials);
 
 }
-//makepassword('./password.txt', './password.enc.txt');
-
-//if (require.main === module) {
-//    makepassword('./password.txt', './password.enc.txt')
-//}
-
 module.exports = {makepassword};

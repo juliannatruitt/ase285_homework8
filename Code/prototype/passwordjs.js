@@ -7,7 +7,6 @@ const {readFromMongoose} = require("./utility");
 async function passwordjs() {
     if (process.argv.length != 4) return 'false';
 
-    //var filename = process.argv[2]
     var email = process.argv[2]
     var password = process.argv[3]
 
@@ -26,13 +25,3 @@ async function main(){
     console.log(await passwordjs());
 }
 main();
-//let usersArray = util.readFile('password.enc.txt');
-//util.uploadToMongoose(usersArray);
-
-//console.log(readFromMongoose("john.deacon@good.com", "bestpassword"));
-//if (require.main === module) {
-//    console.log(passwordjs())
-//} // print out true or false
-
-//
-//module.exports = {???};
