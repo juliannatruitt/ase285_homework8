@@ -37,8 +37,8 @@
 
 ## Input, Output, and Information Flow:
 - input:
-		- user specified if they are signing-in or signin-up to start.
-		- then users enter in an email address and password.
+	- user specified if they are signing-in or signin-up to start.
+	- then users enter in an email address and password.
 - ouput:
 	- users get returned true or false (if using signin).
 	- users get returned a message of if their user credentials were added to the database or not. (if using signup).
