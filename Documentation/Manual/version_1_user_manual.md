@@ -1,0 +1,19 @@
+# User Manual - Version 1
+- This code should be run from the CML
+- Make a .env file with your connection to the mongodb database
+	- This code will user mongoose so you should set the end of your uri to /homework8 since that is the database that will be created when running the code.
+	- The collection that will be made in the homework8 is users where all the users credentials will be stored.
+- run "npm install ." to install all necessary packages needed for the code to run properly.
+- Run the index.js file from the command line.
+	- this will expect 5 parameters.
+	- if 5 parameters are not entered, it will return false.
+	- the first 2 parameters should always be "node index.js"
+	- the third parameter should be either "signin" or "signup"
+		- not case sensative for this parameter.
+	- the fourth parameter is the email of the user.
+	- the fifth parameter is the password of the user.
+	- if using "signin"
+		- it will return true or false based on the credentials that the user entered.
+	- if using "signup" 
+		- if no other user exists with that email, then the user will be added to the database and password will be encypted and stored.
+		- intead of true or false, you will get a message telling you if your user had been added to the database, or if a user with the email already exists.
