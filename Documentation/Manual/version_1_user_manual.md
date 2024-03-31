@@ -1,8 +1,9 @@
 # User Manual - Version 1
 - This code should be run from the CML
 - Make a .env file with your connection to the mongodb database
-	- This code will user mongoose so you should set the end of your uri to /homework8 since that is the database that will be created when running the code.
-	- The collection that will be made in the homework8 is users where all the users credentials will be stored.
+	- This code will use mongoose so you should set the end of your uri to what you want the created database to be called in your mongoDB (i set mine to /homework8).
+	- The collection that will be made in the databse you specifiy is users where all the users credentials will be stored.
+		- users contains a field for username and password.
 - run "npm install ." to install all necessary packages needed for the code to run properly.
 - Run the index.js file from the command line.
 	- this will expect 5 parameters.
