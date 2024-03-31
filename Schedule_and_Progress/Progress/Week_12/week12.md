@@ -1,7 +1,7 @@
 # Week 12 Progress
 
 ## LOC:
--  22 lines of code added.
+-  35 lines of code added.
 
 ## Burndown Rate:
 - 42%
