@@ -1,6 +1,6 @@
 # Architecture Design:
 
-###Main Module (Main.js):
+### Main Module (Main.js):
 - Entry point of the application.
 - Parses command-line arguments to determine whether to sign in or sign up.
 - Calls appropriate functions based on user input.
@@ -10,7 +10,7 @@
 Interfaces:
 	- Calls functions from the Signin and Signup modules.
 
-###Utility Module (utility.js):
+### Utility Module (utility.js):
 - Contains utility functions for file handling, hashing, and interaction with the database.
 - Responsibilities:
 	- Provides utility functions for file handling, hashing, and database interaction.
@@ -26,14 +26,14 @@ Interfaces:
 - Interfaces:
 	- Exports functions for signing in and signing up.
 
-###Database Module (Users.js):
+### Database Module (Users.js):
 - Defines the schema for user data in MongoDB.
 - Utilizes Mongoose for interaction with the MongoDB database.
 - Interfaces:
 	- Exports the Mongoose model for the Users collection.
 	
 ## Rationale:
-	- To create a seperation of concerns of the module. Each module is tasked with a seperate responsibility (following single responsibility principle).
+- To create a seperation of concerns of the module. Each module is tasked with a seperate responsibility (following single responsibility principle).
 
 ## Input, Output, and Information Flow:
 - input:
