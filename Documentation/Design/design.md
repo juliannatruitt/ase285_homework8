@@ -7,7 +7,7 @@
 - Responsibilities:
 	- Parses command-line arguments.
 	- Calls appropriate functions based on user input.
-Interfaces:
+- Interfaces:
 	- Calls functions from the Signin and Signup modules.
 
 ### Utility Module (utility.js):
