@@ -1,0 +1,21 @@
+# User Manual - Version 2
+- This code should be run from the CML
+- Make a .env file with your connection to the mongodb database
+	- This code will use mongoose, so you should set the end of your uri to what you want the created database to be called in your mongoDB (i set mine to /homework8).
+	- The collection that will be made in the database name you specifiy is users where all the users credentials will be stored.
+		- users contains a field for username and password.
+- run "npm install ." to install all necessary packages needed for the code to run properly.
+- Run the index.js file from the command line.
+	- this will expect 5 parameters.
+	- if 5 parameters are not entered, it will return false.
+	- the first 2 parameters should always be "node index.js"
+	- the third parameter should be either "signin" or "signup"
+		- not case sensative for this parameter.
+	- the fourth parameter is the email of the user.
+	- the fifth parameter is the password of the user.
+	- if using "signin"
+		- it will return true or false based on the credentials that the user entered.
+	- if using "signup" 
+		- if no other user exists with that email, then the user will be added to the database and password will be encypted and stored.
+			- It will test the strength of your password prior to your account being made. If password is not strong enough (Does not have at least 1 capital letter, 1 special character, and is at least 8 characters long) then the user account will not be created and user will be displayed with a message reminding them of the password requirements.
+		- intead of true or false, you will get a message telling you if your user had been added to the database, or if a user with the email already exists.

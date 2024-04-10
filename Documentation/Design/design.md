@@ -32,6 +32,13 @@
 - Interfaces:
 	- Exports the Mongoose model for the Users collection.
 	
+### Password Strength Module (password_strength.js):
+- Make sure that passwords being used are strong enough.
+- Responsibilities:
+	- Password must be strong enough in order for a user to signup.
+	- Password must have at least 1 capital letter, 1 special character, and be at least 8 characters long.
+
+	
 ## Rationale:
 - To create a seperation of concerns of the module. Each module is tasked with a seperate responsibility (following single responsibility principle).
 
@@ -54,6 +61,8 @@
 		- information is passed to signup.js
 		- data is then passed to the utility to read from a function that will read from the text file of users and see if the email matches any of the users listed.
 			- if email does not match any of the users, then a new user will be created.
+				- passowrd will get sent to module password_strength to see if the password is strong enough.
+					- if password is not strong enough the user will be returned with a message reminding them of the password requirments.
 				- email and password will first get stored into a text file.
 				- then the module makepassword.js will run which will convert the password in that text file, into a new file with the passwords encypted.
 				- that will then get directed to the utility module which will use a function to upload the file to mongoose.
