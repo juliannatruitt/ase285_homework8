@@ -1,7 +1,7 @@
 # Week 13 Progress
 
 ## LOC:
--  16 lines of code added.
+-  26 lines of code added.
 
 ## Burndown Rate:
 - 57%
