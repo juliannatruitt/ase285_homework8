@@ -18,7 +18,7 @@ async function runmain(){
             return await signup(email, password);
         }
         else console.log("must use 'signin' or 'signout'"); return false;
-    }    
+    }
 }
 
 async function main(){

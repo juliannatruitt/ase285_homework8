@@ -20,7 +20,7 @@ async function runmain(){
 }
 
 async function main(){
-    console.log(await runmain());;
+    console.log(await runmain());
 }
 
 main();

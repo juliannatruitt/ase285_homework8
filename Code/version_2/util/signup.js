@@ -12,17 +12,17 @@ async function signup(email, password){
         allUserEmails.push(username);
     }
     if(allUserEmails.includes(email)){
-        return console.log("User with this email already created, log in or choose another email to signup with.");
+        return "User with this email already created, log in or choose another email to signup with.";
     }
     let password_is_strong_enough = password_strength(password);
     if (password_is_strong_enough) {
         util.appendFile('./data/password.txt', `\n${email}:${password}`);
         await makepassword('./data/password.txt', './data/password.enc.txt');
-        return console.log("User Account Made!");
+        return "User Account Made!";
     }
     else{
-        return console.log("password is not strong enough. It must contain at least 1 capital letter, 1 special character, and" +
-            " be at least 8 characters long.")
+        return "password is not strong enough. It must contain at least 1 capital letter, 1 special character, and" +
+            " be at least 8 characters long.";
     }
 }
 module.exports = {signup};
