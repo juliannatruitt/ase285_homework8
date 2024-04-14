@@ -1,5 +1,6 @@
 'use strict'
 const {readFile, writeFile, hash, uploadToMongoose} = require('./utility');
+const fs = require('fs');
 
 async function makepassword(passwordFileName, encryptedPasswordFileName) {
    let credentials = readFile(passwordFileName);
@@ -12,6 +13,7 @@ async function makepassword(passwordFileName, encryptedPasswordFileName) {
    }
    writeFile(encCredentials, encryptedPasswordFileName);
    await uploadToMongoose(encCredentials);
-
+   fs.unlinkSync(encryptedPasswordFileName);
 }
+
 module.exports = {makepassword};

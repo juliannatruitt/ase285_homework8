@@ -26,6 +26,16 @@
 - Interfaces:
 	- Exports functions for signing in and signing up.
 
+### Make password (makepassword.js):
+- Handles the creation of password.enc.txt and uploading new users to Mongodb.
+- Responsibilities:
+	- use password.txt to make password.enc.txt
+	- make sure that the passwords get hashed before getting stored in password.enc.txt
+	- use pasword.enc.txt to upload new users to Mongodb
+	- password.enc.txt should be created and deleted when running this function.
+Interfaces:
+	- exports function for creating password.enc.txt
+
 ### Database Module (Users.js):
 - Defines the schema for user data in MongoDB.
 - Utilizes Mongoose for interaction with the MongoDB database.

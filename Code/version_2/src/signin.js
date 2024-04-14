@@ -1,9 +1,9 @@
 'use strict'
 const util = require('./utility')
 
-async function signin(email, password){
+async function signin(email, password, passwordFile){
     let allUserEmails = [];
-    let readAllUsers = util.readFile('./data/password.txt');
+    let readAllUsers = util.readFile(passwordFile);
     while (readAllUsers.length > 0){
         let currentUser = readAllUsers.shift();
         let username = currentUser.split(':')[0];
