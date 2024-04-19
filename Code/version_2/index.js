@@ -10,12 +10,13 @@ async function runmain(){
     let password = process.argv[4];
 
     let passwordFile = './data/password.txt'
+    let encryptedPasswordFile = './data/password.enc.txt'
 
     if (signin_or_signup.toLowerCase() === 'signin'){
         return await signin(email, password, passwordFile);
     }else{
         if(signin_or_signup.toLowerCase() === 'signup'){
-            return await signup(email, password);
+            return await signup(email, password, passwordFile,encryptedPasswordFile);
         }
         else return "must use 'signin' or 'signout'";
     }

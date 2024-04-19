@@ -3,9 +3,9 @@ const util = require('./utility')
 const {makepassword} = require('./makepassword.js');
 const {password_strength} = require('./password_strength');
 
-async function signup(email, password){
+async function signup(email, password, fileName, encryptedFileName){
     let allUserEmails = [];
-    let readAllUsers = util.readFile('./data/password.txt');
+    let readAllUsers = util.readFile(fileName);
     while (readAllUsers.length > 0){
         let currentUser = readAllUsers.shift();
         let username = currentUser.split(':')[0];
@@ -16,8 +16,8 @@ async function signup(email, password){
     }
     let password_is_strong_enough = password_strength(password);
     if (password_is_strong_enough) {
-        util.appendFile('./data/password.txt', `\n${email}:${password}`);
-        await makepassword('./data/password.txt', './data/password.enc.txt');
+        util.appendFile(fileName, `\n${email}:${password}`);
+        await makepassword(fileName, encryptedFileName);
         return "User Account Made!";
     }
     else{
