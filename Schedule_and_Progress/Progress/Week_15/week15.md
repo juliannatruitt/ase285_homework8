@@ -4,7 +4,7 @@
 -  111 lines of code added.
 
 ## Burndown Rate:
-- 85%
+- 86%
 
 ## Test coverage
 - 14/14 unit tests complete
