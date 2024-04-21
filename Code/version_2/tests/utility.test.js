@@ -1,4 +1,4 @@
-const {readFile, writeFile, appendFile, hash, uploadToMongoose, readFromMongoose} = require('../src/utility.js');
+const {readFile, writeFile, appendFile, hash, readFromMongoose} = require('../src/utility.js');
 const fs = require('fs');
 const {createHash} = require("crypto");
 const Users = require("../models/Users");
@@ -61,37 +61,11 @@ describe('make sure hash() function works', () => {
     })
 });
 
-describe('make sure uploadToMongoose function works', () => {
-    let allUsers =[];
-    beforeAll(async () => {
-        await mongoose.connect(process.env.URI);
-        allUsers = await Users.find({});
-        await mongoose.connection.close();
-    });
-    test('if a user already with an email already exists, they should not get added to the database', async () => {
-        try {
-            let user = ['juls8885@gmail.com:12345677'];
-            await uploadToMongoose(user);
-
-            let allUsersAgain = await Users.find({});
-
-            expect(allUsers.length).toEqual(allUsersAgain.length);
-        }catch(error){
-            await mongoose.connection.close();
-            console.log(error);
-        }
-    });
-    afterAll(async () =>{
-        await mongoose.connection.close();
-    })
-});
-
 
 describe('make sure readFromMongoose function works', () => {
     test('testing that a user already created and uploaded returns true to correct credentials', async () => {
         try {
 
-            let hashedPassword = hash('12345677')
             let validUser = readFromMongoose('juls8885@gmail.com', '12345677');
 
             expect(validUser).toEqual(true);

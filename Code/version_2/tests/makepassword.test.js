@@ -47,8 +47,7 @@ describe("makepassword should create encryption file and delete it after running
         let credentials_again = readFile(fileName);
         let count_total_users = 0;
         for (let i=0; i<credentials_again.length; i++){
-            let getCredential = credentials_again.shift();
-            let [username, password] = getCredential.split(':');
+            let [username, password] = credentials_again[i].split(':');
             let [current_username, current_password] =  usercredentials_enc[i].split(':');
             if (hash(password.trim()) === current_password){
                 count_total_users++;
