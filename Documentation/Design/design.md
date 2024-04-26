@@ -1,6 +1,6 @@
 # Architecture Design:
 
-### Main Module (Main.js):
+### Main Module (index.js):
 - Entry point of the application.
 - Parses command-line arguments to determine whether to sign in or sign up.
 - Calls appropriate functions based on user input.
