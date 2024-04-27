@@ -1,0 +1,23 @@
+{"header" : {
+  "cloc_url"           : "github.com/AlDanial/cloc",
+  "cloc_version"       : "1.98",
+  "elapsed_seconds"    : 0.0266320705413818,
+  "n_files"            : 6,
+  "n_lines"            : 257,
+  "files_per_second"   : 225.292284003115,
+  "lines_per_second"   : 9650.01949813344},
+"JavaScript" :{
+  "nFiles": 5,
+  "blank": 52,
+  "comment": 19,
+  "code": 172},
+"DOS Batch" :{
+  "nFiles": 1,
+  "blank": 5,
+  "comment": 0,
+  "code": 9},
+"SUM": {
+  "blank": 57,
+  "comment": 19,
+  "code": 181,
+  "nFiles": 6} }
