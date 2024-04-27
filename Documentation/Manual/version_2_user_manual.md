@@ -4,6 +4,7 @@
 	- This code will use mongoose, so you should set the end of your uri to what you want the created database to be called in your mongoDB (i set mine to /homework8).
 	- The collection that will be made in the database name you specifiy is users where all the users credentials will be stored.
 		- users contains a field for username and password.
+    	- example of what the .env file should look like: "URI = `mongodb+srv://username:Mongodb@your_cluster.hsm2bil.mongodb.net/name_you_want_to_make_the_database_it_creates`"
 - run "npm install ." to install all necessary packages needed for the code to run properly.
 - Run the index.js file from the command line.
 	- this will expect 5 parameters.
