@@ -1,4 +1,4 @@
-const {readFile, writeFile, appendFile, hash, readFromMongoose} = require('../src/utility.js');
+const {readFile, writeFile, appendFile, hash, readFromMongoose, uploadToMongoose} = require('../src/utility.js');
 const fs = require('fs');
 const {createHash} = require("crypto");
 const Users = require("../models/Users");
@@ -65,12 +65,29 @@ describe('make sure hash() function works', () => {
 describe('make sure readFromMongoose function works', () => {
     test('testing that a user already created and uploaded returns true to correct credentials', async () => {
         try {
+            let validUser = await readFromMongoose('juliannat@gmail.com', 'ILoveSchool6!');
 
-            let validUser = readFromMongoose('juls8885@gmail.com', '12345677');
-
-            expect(validUser).toEqual(true);
+            expect(validUser).toBe(true);
         }catch(error){
             await mongoose.connection.close();
+            console.log(error);
+        }
+    }, 100000)
+});
+
+describe('make sure uploadtomongoose function works', () => {
+    test('making sure that a new user gets added to the database. (this test will only run once because the user will be added,' +
+        ' change the credentials to a different email to test a different user!', async () => {
+        try {
+
+            const console_spy = jest.spyOn(console, 'log');
+            await uploadToMongoose(['newUserHaHaTest:UnitTest123!']);
+
+
+            expect(console_spy).toHaveBeenCalledWith("Connected to DB!");
+            console_spy.mockRestore();
+
+        }catch(error){
             console.log(error);
         }
     }, 100000)
